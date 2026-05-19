@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地震學第四章：震源機制互動測驗</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #f0f2f5; 
+            color: #333; 
+            line-height: 1.6; 
+            padding: 20px; 
+            margin: 0;
+        }
+        .quiz-container { 
+            max-width: 800px; 
+            margin: auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+        }
+        .topic-block { 
+            border-left: 5px solid #2b6cb0; 
+            padding: 20px; 
+            margin-bottom: 30px; 
+            background: #fafafa; 
+            border-radius: 0 8px 8px 0;
+        }
+        .svg-anim { display: block; margin: 20px auto; }
+        button { 
+            padding: 12px 20px; 
+            cursor: pointer; 
+            border: none; 
+            background: #2b6cb0; 
+            color: white; 
+            border-radius: 5px; 
+            transition: 0.3s; 
+            margin: 5px;
+            font-size: 1rem;
+        }
+        button:hover { background: #1a365d; }
+        .result { margin-top: 15px; font-weight: bold; padding: 10px; border-radius: 5px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1 style="text-align:center; color: #2b6cb0;">地震學第四章：震源機制互動測驗</h1>
+    
+    <!-- 題目 10 -->
+    <div class="topic-block">
+        <h3>10. 震矩規模 (M<sub>w</sub>) vs. 傳統規模</h3>
+        <p>傳統規模容易「飽和」，是因為它測量的是「波的尖峰振幅」，而非地震總能量。震矩規模 (M<sub>w</sub>) 透過斷層滑移的物理數據計算，能精確描述大地震的能量釋放。</p>
+        <svg class="svg-anim" width="200" height="100">
+            <rect x="20" y="20" width="160" height="30" fill="#cbd5e0" />
+            <rect id="moment-bar" x="20" y="20" width="40" height="30" fill="#e53e3e" />
+            <text x="50" y="70" font-size="12" fill="#4a5568">震矩計算面積</text>
+        </svg>
+        <div class="question">
+            <p><strong>問：為什麼在大地震時，震矩規模 (M<sub>w</sub>) 比芮氏規模 (M<sub>L</sub>) 更可靠？</strong></p>
+            <button onclick="answer(10, true)">因為它基於斷層物理性質，不會飽和</button>
+            <button onclick="answer(10, false)">因為它測量距離比較遠</button>
+            <div id="res-10" class="result"></div>
+        </div>
+    </div>
+
+    <!-- 題目 11 -->
+    <div class="topic-block">
+        <h3>11. Gutenberg-Richter 定律</h3>
+        <p>log N = a - bM。這是描述地震頻率與規模統計關係的定律。通常 b ≈ 1，代表規模每增加 1，地震數量約減少 10 倍。</p>
+        <div class="question">
+            <p><strong>問：若 b 值從 1.0 變為 0.5，代表什麼物理意義？</strong></p>
+            <button onclick="answer(11, false)">地震變少了很多</button>
+            <button onclick="answer(11, true)">相較於小地震，大地震的比例增加了</button>
+            <div id="res-11" class="result"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function answer(id, isCorrect) {
+        const el = document.getElementById('res-' + id);
+        el.style.display = 'block';
+        el.innerHTML = isCorrect ? "✅ 答對了！這顯示你對物理參數的敏感度很高。" : "❌ 再試試看！思考一下飽和現象的物理定義。";
+        el.style.backgroundColor = isCorrect ? "#c6f6d5" : "#fed7d7";
+        el.style.color = isCorrect ? "#22543d" : "#822727";
+    }
+</script>
+
+</body>
+</html>
